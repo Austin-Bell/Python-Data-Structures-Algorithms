@@ -61,8 +61,5 @@ class Queue:
         return self.size == 0
 
 
-q = Queue(10)
-q.enqueue("Austin")
-q.enqueue("Aaron")
-print(q.peek())
+
 
