@@ -6,7 +6,7 @@ class HashMap:
 		self.array = [None for i in range(self.array_size)]
 
 	# hashing function takes a key and returns an index into the underlying array.
-	def hash(self, key):
+	def hash(self, key, number_collisions=0):
 		# .encode() is a string method that converts a string into bytes  as list-like object with the numerical representation of each character in the string.
 		key_bytes = key.encode()
 		hash_code = sum(key_bytes)
@@ -64,9 +64,9 @@ class HashMap:
 		retrieval_collisions = 1
 
 		while (possible_return_value != key):
-			  new_hash_code = self.hash(key, retrieval_collisions)
-			  retrieving_array_index = self.compressor(new_hash_code)
-			  possible_return_value = self.array[retrieving_array_index]
+			new_hash_code = self.hash(key, retrieval_collisions)
+			retrieving_array_index = self.compressor(new_hash_code)
+			possible_return_value = self.array[retrieving_array_index]
 
 		if possible_return_value is None:
 			return None
@@ -77,4 +77,3 @@ class HashMap:
 		retrieval_collisions += 1
 
 		return
-
